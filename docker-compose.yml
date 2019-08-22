@@ -1,0 +1,30 @@
+version: '3.5'
+
+services:
+  phalcon-vokuro:
+    container_name: phalcon-vokuro
+    image: phalcon-local
+    volumes:
+      - ./Projects:/srv:rw
+    ports:
+      - "2000:81"
+  phalcon-db-mysql:
+    container_name: phalcon-db-mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: "db"
+      MYSQL_USER: "phalcon"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "root"
+    ports:
+      - "3350:3306"
+    volumes:
+      - mysql-db:/var/lib/mysql
+
+networks:
+  default:
+    name: phalcon-local
+
+volumes:
+  mysql-db:
