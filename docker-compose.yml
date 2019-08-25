@@ -11,14 +11,13 @@ services:
   phalcon-db-mysql:
     container_name: phalcon-db-mysql
     image: mysql:5.7
-    restart: always
     environment:
       MYSQL_DATABASE: "db"
       MYSQL_USER: "phalcon"
       MYSQL_PASSWORD: "password"
       MYSQL_ROOT_PASSWORD: "root"
     ports:
-      - "3350:3306"
+      - "3351:3306"
     volumes:
       - mysql-db:/var/lib/mysql
 
