@@ -4,10 +4,19 @@ services:
   phalcon-vokuro:
     container_name: phalcon-vokuro
     image: phalcon-local
+    working_dir: /srv
     volumes:
-      - ./Projects:/srv:rw
+      - ./Projects/vokuro:/srv:rw
     ports:
       - "2000:81"
+  phalcon-api:
+    container_name: phalcon-api
+    image: phalcon-local
+    working_dir: /srv
+    volumes:
+      - ./Projects/phalcon-api:/srv:rw
+    ports:
+      - "2001:82"
   phalcon-db-mysql:
     container_name: phalcon-db-mysql
     image: mysql:5.7

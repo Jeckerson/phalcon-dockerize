@@ -2,7 +2,7 @@ server {
     listen 81;
 
     server_name vokuro.local;
-    root /srv/vokuro/public;
+    root /srv/public;
     index index.php index.html;
     charset utf-8;
     client_max_body_size 8M;
