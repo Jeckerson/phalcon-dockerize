@@ -6,6 +6,7 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y git \
         unzip \
         nginx \
         supervisor \
+        memcached \
         php7.2-common \
         php7.2-cli \
         php7.2-mbstring \
@@ -14,6 +15,7 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y git \
         php7.2-curl \
         php7.2-mysql \
         php7.2-sqlite \
+        php7.2-memcached \
         php7.2-zip && \
     mkdir -p /run/php
 
