@@ -1,0 +1,35 @@
+server {
+    listen 82;
+
+    server_name phalcon-api.local;
+    root /srv/api/public;
+    index index.php index.html;
+    charset utf-8;
+    client_max_body_size 8M;
+
+    location / {
+        try_files $uri $uri/ /index.php?_url=$uri&$args;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+
+        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+        include /etc/nginx/fastcgi.conf;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    location = /favicon.ico {
+        log_not_found off;
+        access_log off;
+    }
+
+    location ~* \.(ico|css|js|gif|jpe?g|png)(\?[0-9]+)?$ {
+        expires max;
+        log_not_found off;
+        access_log off;
+    }
+}
