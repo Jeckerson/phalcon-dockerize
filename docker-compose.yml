@@ -1,6 +1,14 @@
 version: '3.5'
 
 services:
+  phalcon-cphalcon:
+    container_name: phalcon-cphalcon
+    image: phalcon-local
+    working_dir: /srv
+    volumes:
+      - ./Projects/cphalcon:/srv:rw
+    ports:
+      - "1999:88"
   phalcon-vokuro:
     container_name: phalcon-vokuro
     image: phalcon-local
