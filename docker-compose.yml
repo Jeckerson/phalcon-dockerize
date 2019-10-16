@@ -33,6 +33,15 @@ services:
       - ./Projects/phalcon-devtools:/srv:rw
     ports:
       - "2002:83"
+      - "2003:8000"
+  phalcon-migrations:
+    container_name: phalcon-migrations
+    image: phalcon-local:4.0.0-rc.1
+    working_dir: /srv
+    volumes:
+      - ./Projects/phalcon-migrations-generator:/srv:rw
+    ports:
+      - "2004:89"
   phalcon-db-mysql:
     container_name: phalcon-db-mysql
     image: mysql:5.7
