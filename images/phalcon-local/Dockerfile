@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 ARG PHALCON_VERSION
 
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y git \
+RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -y git \
         wget \
         curl \
         unzip \
