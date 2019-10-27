@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+ARG PHALCON_VERSION
+
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y git \
         wget \
         curl \
@@ -25,7 +27,7 @@ RUN apt install -y  \
         php7.2-dev && \
     cd /opt && \
     rm -rf cphalcon && \
-    git clone --branch '4.0.x' "git://github.com/phalcon/cphalcon.git" && \
+    git clone --depth=1 --branch "${PHALCON_VERSION}" "git://github.com/phalcon/cphalcon.git" && \
     cd cphalcon/build && \
     ./install && \
     cd /opt && \
