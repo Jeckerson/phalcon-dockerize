@@ -39,7 +39,7 @@ services:
     image: phalcon-local:4.0.0-rc.2
     working_dir: /srv
     volumes:
-      - ./Projects/phalcon-migrations-generator:/srv:rw
+      - ./Projects/migrations:/srv:rw
     ports:
       - "2004:89"
   phalcon-db-mysql:
