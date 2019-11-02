@@ -3,6 +3,7 @@ FROM ubuntu:18.04
 ARG PHALCON_VERSION
 
 RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -y git \
+	nano \
         wget \
         curl \
         unzip \
