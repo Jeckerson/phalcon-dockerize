@@ -3,13 +3,14 @@ FROM ubuntu:18.04
 ARG PHALCON_VERSION
 
 RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -y git \
-	nano \
+	    nano \
         wget \
         curl \
         unzip \
         nginx \
         supervisor \
         memcached \
+        mysql-client \
         php7.2-common \
         php7.2-cli \
         php7.2-mbstring \
