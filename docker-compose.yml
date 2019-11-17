@@ -3,7 +3,7 @@ version: '3.5'
 services:
   phalcon-cphalcon:
     container_name: phalcon-cphalcon
-    image: phalcon-local:4.0.0-rc.2
+    image: phalcon-local:4.0.0-rc.3
     working_dir: /srv
     volumes:
       - ./Projects/cphalcon:/srv:rw
@@ -11,7 +11,7 @@ services:
       - "1999:88"
   phalcon-vokuro:
     container_name: phalcon-vokuro
-    image: phalcon-local:4.0.0-rc.2
+    image: phalcon-local:4.0.0-rc.3
     working_dir: /srv
     volumes:
       - ./Projects/vokuro:/srv:rw
@@ -19,7 +19,7 @@ services:
       - "2000:81"
   phalcon-api:
     container_name: phalcon-api
-    image: phalcon-local:4.0.0-rc.2
+    image: phalcon-local:4.0.0-rc.3
     working_dir: /srv
     volumes:
       - ./Projects/phalcon-api:/srv:rw
@@ -27,7 +27,7 @@ services:
       - "2001:82"
   phalcon-devtools:
     container_name: phalcon-devtools
-    image: phalcon-local:3.4.4
+    image: phalcon-local:4.0.0-rc.3
     working_dir: /srv/
     volumes:
       - ./Projects/phalcon-devtools:/srv:rw
@@ -36,7 +36,7 @@ services:
       - "2003:8000"
   phalcon-migrations:
     container_name: phalcon-migrations
-    image: phalcon-local:4.0.0-rc.2
+    image: phalcon-local:4.0.0-rc.3
     working_dir: /srv
     volumes:
       - ./Projects/migrations:/srv:rw
