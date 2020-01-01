@@ -11,6 +11,7 @@ RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -
         supervisor \
         memcached \
         mysql-client \
+        postgresql-client \
         php7.2-common \
         php7.2-cli \
         php7.2-mbstring \
