@@ -18,8 +18,10 @@ RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -
         php7.2-fpm \
         php7.2-curl \
         php7.2-mysql \
+        php7.2-pgsql \
         php7.2-sqlite \
         php7.2-memcached \
+	    php7.2-gd \
         php7.2-zip && \
     mkdir -p /run/php
 
