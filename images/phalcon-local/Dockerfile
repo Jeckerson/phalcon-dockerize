@@ -10,6 +10,7 @@ RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -
         nginx \
         supervisor \
         memcached \
+        sqlite3 \
         mysql-client \
         postgresql-client \
         php7.2-common \
