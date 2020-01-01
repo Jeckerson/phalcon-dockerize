@@ -73,6 +73,9 @@ services:
       - "3352:5432"
     volumes:
       - pgsql-db:/var/lib/postgresql
+  phalcon-redis:
+    container_name: phalcon-redis
+    image: redis
 
 networks:
   default:
