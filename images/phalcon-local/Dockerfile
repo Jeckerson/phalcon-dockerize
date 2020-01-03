@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 ARG PHALCON_VERSION
 
 RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -y git \
-	    nano \
+        nano \
         wget \
         curl \
         unzip \
@@ -23,9 +23,9 @@ RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -
         php7.2-pgsql \
         php7.2-sqlite \
         php7.2-memcached \
-	    php7.2-gd \
-	    php-redis \
-	    php-apcu \
+        php7.2-gd \
+        php-redis \
+        php-apcu \
         php7.2-zip && \
     mkdir -p /run/php
 
