@@ -29,15 +29,29 @@ RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -
         php7.2-zip && \
     mkdir -p /run/php
 
+# Download and Install composer
+RUN wget https://github.com/composer/composer/releases/download/1.9.3/composer.phar && \
+    wget https://github.com/phalcon/zephir/releases/download/0.12.16/zephir.phar && \
+    chmod ugo+x composer.phar zephir.phar && \
+    mv composer.phar /usr/local/bin/composer && \
+    mv zephir.phar /usr/local/bin/zephir && \
+    composer global require hirak/prestissimo
+
 RUN apt install -y  \
         make \
         gcc \
+        re2c \
+        autoconf \
+        automake \
         php7.2-dev && \
     cd /opt && \
-    rm -rf cphalcon && \
-    git clone --depth=1 --branch "${PHALCON_VERSION}" "git://github.com/phalcon/cphalcon.git" && \
-    cd cphalcon/build && \
-    ./install && \
+    rm -rf php-zephir-parser && \
+    git clone git://github.com/phalcon/php-zephir-parser.git && \
+    cd php-zephir-parser && \
+    phpize && \
+    ./configure && \
+    make && make install && \
+    echo 'extension=zephir_parser.so' > /etc/php/7.2/cli/conf.d/48-zephir_parser.ini && \
     cd /opt && \
     rm -rf php-psr && \
     git clone https://github.com/jbboehr/php-psr.git && \
@@ -45,8 +59,20 @@ RUN apt install -y  \
     phpize && \
     ./configure && \
     make && make install && \
-    echo 'extension=psr.so\nextension=phalcon.so' > /etc/php/7.2/fpm/conf.d/50-phalcon.ini && \
-    echo 'extension=psr.so\nextension=phalcon.so' > /etc/php/7.2/cli/conf.d/50-phalcon.ini && \
+    echo 'extension=psr.so' > /etc/php/7.2/fpm/conf.d/49-psr.ini && \
+    echo 'extension=psr.so' > /etc/php/7.2/cli/conf.d/49-psr.ini && \
+    cd /opt && \
+    rm -rf cphalcon && \
+    git clone --depth=1 --branch "${PHALCON_VERSION}" "git://github.com/phalcon/cphalcon.git" && \
+    cd cphalcon && \
+    zephir fullclean && \
+    zephir build && \
+    cd ext/ && \
+    phpize && \
+    ./configure && \
+    make && make intall && \
+    echo 'extension=phalcon.so' > /etc/php/7.2/fpm/conf.d/50-phalcon.ini && \
+    echo 'extension=phalcon.so' > /etc/php/7.2/cli/conf.d/50-phalcon.ini && \
     apt purge -y make \
         gcc \
         php7.2-dev && \
