@@ -43,16 +43,18 @@ RUN apt install -y  \
         re2c \
         autoconf \
         automake \
-        php7.2-dev && \
-    cd /opt && \
+        php7.2-dev
+
+RUN cd /opt && \
     rm -rf php-zephir-parser && \
     git clone git://github.com/phalcon/php-zephir-parser.git && \
     cd php-zephir-parser && \
     phpize && \
     ./configure && \
     make && make install && \
-    echo 'extension=zephir_parser.so' > /etc/php/7.2/cli/conf.d/48-zephir_parser.ini && \
-    cd /opt && \
+    echo 'extension=zephir_parser.so' > /etc/php/7.2/cli/conf.d/48-zephir_parser.ini
+
+RUN cd /opt && \
     rm -rf php-psr && \
     git clone https://github.com/jbboehr/php-psr.git && \
     cd php-psr && \
@@ -60,8 +62,9 @@ RUN apt install -y  \
     ./configure && \
     make && make install && \
     echo 'extension=psr.so' > /etc/php/7.2/fpm/conf.d/49-psr.ini && \
-    echo 'extension=psr.so' > /etc/php/7.2/cli/conf.d/49-psr.ini && \
-    cd /opt && \
+    echo 'extension=psr.so' > /etc/php/7.2/cli/conf.d/49-psr.ini
+
+RUN cd /opt && \
     rm -rf cphalcon && \
     git clone --depth=1 --branch "${PHALCON_VERSION}" "git://github.com/phalcon/cphalcon.git" && \
     cd cphalcon && \
@@ -70,11 +73,16 @@ RUN apt install -y  \
     cd ext/ && \
     phpize && \
     ./configure && \
-    make && make intall && \
+    make && \
+    cd /opt/cphalcon/ext && \
+    make intall && \
     echo 'extension=phalcon.so' > /etc/php/7.2/fpm/conf.d/50-phalcon.ini && \
     echo 'extension=phalcon.so' > /etc/php/7.2/cli/conf.d/50-phalcon.ini && \
     apt purge -y make \
         gcc \
+        re2c \
+        autoconf \
+        automake \
         php7.2-dev && \
     apt clean
 
