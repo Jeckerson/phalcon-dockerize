@@ -45,6 +45,7 @@ RUN apt install -y  \
         automake \
         php7.2-dev
 
+# Download and install Zephir
 RUN cd /opt && \
     rm -rf php-zephir-parser && \
     git clone git://github.com/phalcon/php-zephir-parser.git && \
@@ -54,6 +55,7 @@ RUN cd /opt && \
     make && make install && \
     echo 'extension=zephir_parser.so' > /etc/php/7.2/cli/conf.d/48-zephir_parser.ini
 
+# Download, install and enable PSR PHP module
 RUN cd /opt && \
     rm -rf php-psr && \
     git clone https://github.com/jbboehr/php-psr.git && \
@@ -64,6 +66,7 @@ RUN cd /opt && \
     echo 'extension=psr.so' > /etc/php/7.2/fpm/conf.d/49-psr.ini && \
     echo 'extension=psr.so' > /etc/php/7.2/cli/conf.d/49-psr.ini
 
+# Git clone, build, compile, install and enable Phalcon PHP Module
 RUN cd /opt && \
     rm -rf cphalcon && \
     git clone --depth=1 --branch "${PHALCON_VERSION}" "git://github.com/phalcon/cphalcon.git" && \
