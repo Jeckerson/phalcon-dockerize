@@ -43,6 +43,7 @@ RUN apt install -y  \
         re2c \
         autoconf \
         automake \
+        build-essential \
         php7.2-dev
 
 RUN cd /opt && \
@@ -66,16 +67,12 @@ RUN cd /opt && \
 
 RUN cd /opt && \
     rm -rf cphalcon && \
-    git clone --depth=1 --branch "${PHALCON_VERSION}" "git://github.com/phalcon/cphalcon.git" && \
+    git clone --depth=1 --branch "${PHALCON_VERSION}" "https://github.com/phalcon/cphalcon.git" && \
     cd cphalcon && \
     zephir fullclean && \
     zephir build && \
     cd ext/ && \
-    phpize && \
-    ./configure && \
-    make && \
-    cd /opt/cphalcon/ext && \
-    make intall && \
+    ./install && \
     echo 'extension=phalcon.so' > /etc/php/7.2/fpm/conf.d/50-phalcon.ini && \
     echo 'extension=phalcon.so' > /etc/php/7.2/cli/conf.d/50-phalcon.ini && \
     apt purge -y make \
@@ -83,8 +80,11 @@ RUN cd /opt && \
         re2c \
         autoconf \
         automake \
+        build-essential \
         php7.2-dev && \
     apt clean
+
+RUN php -r 'echo Phalcon\Version::get() . PHP_EOL;'
 
 EXPOSE 9000 80 81 443
 
