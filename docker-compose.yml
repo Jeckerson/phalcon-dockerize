@@ -74,6 +74,14 @@ services:
       - ./Projects/incubator-annotations:/srv:rw
     ports:
       - "2009:93"
+  phalcon-incubator-test:
+    container_name: phalcon-incubator-test
+    image: phalcon-local:4.0.5
+    working_dir: /srv
+    volumes:
+      - ./Projects/incubator-test:/srv:rw
+    ports:
+      - "2010:94"
   phalcon-db-mysql:
     container_name: phalcon-db-mysql
     image: mysql:5.7
