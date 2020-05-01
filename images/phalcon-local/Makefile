@@ -1,2 +1,2 @@
 build:
-	docker build --tag phalcon-local:4.0.3 --build-arg PHALCON_VERSION=v4.0.3 .
+	docker build --tag phalcon-local:4.0.5 --build-arg PHALCON_VERSION=v4.0.5 .
