@@ -89,7 +89,7 @@ services:
     volumes:
       - ./Projects/incubator-session:/srv:rw
     ports:
-      - "2010:94"
+      - "2011:94"
   phalcon-db-mysql:
     container_name: phalcon-db-mysql
     image: mysql:5.7
