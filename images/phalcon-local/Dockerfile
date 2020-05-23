@@ -30,8 +30,8 @@ RUN apt update && apt -y upgrade && DEBIAN_FRONTEND=noninteractive apt install -
     mkdir -p /run/php
 
 # Download and Install composer
-RUN wget https://github.com/composer/composer/releases/download/1.9.3/composer.phar && \
-    wget https://github.com/phalcon/zephir/releases/download/0.12.16/zephir.phar && \
+RUN wget https://github.com/composer/composer/releases/download/1.10.5/composer.phar && \
+    wget https://github.com/phalcon/zephir/releases/download/0.12.18/zephir.phar && \
     chmod ugo+x composer.phar zephir.phar && \
     mv composer.phar /usr/local/bin/composer && \
     mv zephir.phar /usr/local/bin/zephir && \
