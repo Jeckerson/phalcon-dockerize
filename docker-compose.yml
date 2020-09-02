@@ -90,6 +90,14 @@ services:
       - ./Projects/incubator-session:/srv:rw
     ports:
       - "2011:94"
+  phalcon-incubator-config:
+    container_name: phalcon-incubator-config
+    image: phalcon-local:4.0.5
+    working_dir: /srv
+    volumes:
+      - ./Projects/incubator-config:/srv:rw
+    ports:
+      - "2012:94"
   phalcon-db-mysql:
     container_name: phalcon-db-mysql
     image: mysql:5.7
