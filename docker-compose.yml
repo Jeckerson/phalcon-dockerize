@@ -98,6 +98,14 @@ services:
       - ./Projects/incubator-config:/srv:rw
     ports:
       - "2012:94"
+  phalcon-incubator-db:
+    container_name: phalcon-incubator-db
+    image: phalcon-local:4.0.5
+    working_dir: /srv
+    volumes:
+      - ./Projects/incubator-db:/srv:rw
+    ports:
+      - "2013:95"
   phalcon-db-mysql:
     container_name: phalcon-db-mysql
     image: mysql:5.7
