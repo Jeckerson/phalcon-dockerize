@@ -116,6 +116,14 @@ services:
   phalcon-redis:
     container_name: phalcon-redis
     image: redis
+  phalcon-phalcon:
+    container_name: phalcon-phalcon
+    image: php:7.4-fpm
+    working_dir: /srv
+    ports:
+      - "1000:100"
+    volumes:
+      - ./Projects/phalcon:/srv:rw
 
 networks:
   default:
