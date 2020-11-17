@@ -89,9 +89,9 @@ RUN cd /opt && \
 
 RUN php -r 'echo Phalcon\Version::get() . PHP_EOL;'
 
-EXPOSE 9000 80 81 443
-
 COPY ./etc /etc
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+EXPOSE 9000 80 81 8080 443
 
 CMD ["/usr/bin/supervisord"]
