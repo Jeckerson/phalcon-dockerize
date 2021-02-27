@@ -105,7 +105,7 @@ services:
     volumes:
       - ./Projects/incubator-db:/srv:rw
     ports:
-      - "2012:95"
+      - "2013:95"
   phalcon-incubator-logger:
     container_name: phalcon-incubator-logger
     image: phalcon-local:4.0.5
@@ -113,7 +113,7 @@ services:
     volumes:
       - ./Projects/incubator-logger:/srv:rw
     ports:
-      - "2013:96"
+      - "2014:96"
   phalcon-db-mysql:
     container_name: phalcon-db-mysql
     image: mysql:5.7
